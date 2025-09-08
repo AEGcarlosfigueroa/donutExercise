@@ -536,6 +536,8 @@ function convertStringToNumber(string)
 
     listDonutsWithCarbohydrates();
 
+    showAverageCaloriesOfAllDonuts();
+
     console.log("////////////////////");
   }
 
@@ -590,6 +592,27 @@ function convertStringToNumber(string)
 
       console.log("Fiber Amount: " + fiberAmount);
     }
+  }
+
+  //average calories of all donuts
+  function showAverageCaloriesOfAllDonuts()
+  {
+    console.log("////////////////////");
+
+    const donuts = data.items.item;
+
+    let totalCalories = 0;
+
+    for(let i=0; i<donuts.length;i++)
+    {
+      const calories = donuts[i].nutrition_facts.nutrition.calories;
+
+      totalCalories += calories;
+    }
+
+    let averageCalories = totalCalories / donuts.length;
+
+    console.log("Average Calories of all donuts: " + averageCalories);
   }
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
