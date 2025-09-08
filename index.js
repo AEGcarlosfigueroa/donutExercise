@@ -323,6 +323,11 @@ exercise1();
 
 function exercise1()
 {
+
+  console.log("");
+  console.log("EXERCISE 1");
+  console.log("////////////////////");
+
     //find donut with most sugar
     const donutWithMostSugar = findDonutMostSugar();
 
@@ -347,6 +352,8 @@ function exercise1()
     const donutWithMostIron = findDonutMostIron();
 
     console.log("Donut with most iron: " + donutWithMostIron.name);
+
+    console.log("////////////////////");
 }
 
 function findDonutMostIron()
@@ -517,6 +524,36 @@ function convertStringToNumber(string)
 	//Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
 
 	//Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
+
+  exercise2();
+
+  function exercise2()
+  {
+    console.log("");
+    console.log("EXERCISE 2");
+
+    listDonutsWithCalories();
+
+    console.log("////////////////////");
+  }
+
+  //list all donuts with their respective calories
+  function listDonutsWithCalories()
+  {
+    console.log("////////////////////");
+    console.log("List of donuts with calorie amounts:");
+
+    const donuts = data.items.item;
+
+    for(let i=0; i<donuts.length;i++)
+    {
+      const name = donuts[i].name;
+
+      const calories = donuts[i].nutrition_facts.nutrition.calories;
+
+      console.log(name + ": " + calories + " calories");
+    }
+  }
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
 
