@@ -495,7 +495,7 @@ function findDonutMostSugar()
 
 function convertStringToNumber(string)
 {
-    string = string.replace(".", "");
+    string = string.replace("g", "");
 
     string = string.replace("%", "");
 
@@ -537,6 +537,10 @@ function convertStringToNumber(string)
     listDonutsWithCarbohydrates();
 
     showAverageCaloriesOfAllDonuts();
+
+    showSumOfSaturatedFatsInAllDonuts();
+
+    showAveragePercentageOfVitaminsInAllDonuts();
 
     console.log("////////////////////");
   }
@@ -613,6 +617,87 @@ function convertStringToNumber(string)
     let averageCalories = totalCalories / donuts.length;
 
     console.log("Average Calories of all donuts: " + averageCalories);
+  }
+
+  //sum of saturated fats of all donuts
+  function showSumOfSaturatedFatsInAllDonuts()
+  {
+    console.log("////////////////////");
+    const donuts = data.items.item;
+
+    let totalSaturatedFats = 0;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const saturatedFatsString = donuts[i].nutrition_facts.nutrition.fat.fat_type.saturated;
+
+      const saturatedFats = convertStringToNumber(saturatedFatsString);
+
+      totalSaturatedFats += saturatedFats;
+    }
+
+    console.log("Total saturated fats of all donuts: " + totalSaturatedFats);
+  }
+
+  //calculates and shows average percentage of all vitamins in all donuts
+  function showAveragePercentageOfVitaminsInAllDonuts()
+  {
+    console.log("////////////////////");
+    const donuts = data.items.item;
+
+    let sumVitaminA = 0;
+
+    let sumVitaminC = 0;
+
+    let sumCalcium = 0;
+
+    let sumIron = 0;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const vitamins = donuts[i].nutrition_facts.nutrition.vitamins;
+
+      for(let j=0; j<vitamins.length; j++)
+      {
+        const type = vitamins[j].type;
+
+        const vitaminPercent = convertStringToNumber(vitamins[j].percent);
+
+        switch(type)
+        {
+          case "Vitamin A":
+            sumVitaminA += vitaminPercent;
+          break;
+          case "Vitamin C":
+            sumVitaminC += vitaminPercent;
+          break;
+          case "Calcium":
+            sumCalcium += vitaminPercent;
+          break;
+          case "Iron":
+            sumIron += vitaminPercent;
+          break;      
+        }
+      }
+    }
+
+    const averageVitaminA = sumVitaminA / donuts.length;
+
+    const averageVitaminC = sumVitaminC / donuts.length;
+
+    const averageCalcium = sumCalcium / donuts.length;
+
+    const averageIron = sumIron / donuts.length;
+
+    console.log("Average of all vitamins in all donuts: ");
+
+    console.log("Vitamin A: " + averageVitaminA + "%");
+
+    console.log("Vitamin C: " + averageVitaminC + "%");
+
+    console.log("Calcium: " + averageCalcium + "%");
+
+    console.log("Iron: " + averageIron + "%");
   }
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
