@@ -534,6 +534,8 @@ function convertStringToNumber(string)
 
     listDonutsWithCalories();
 
+    listDonutsWithCarbohydrates();
+
     console.log("////////////////////");
   }
 
@@ -552,6 +554,41 @@ function convertStringToNumber(string)
       const calories = donuts[i].nutrition_facts.nutrition.calories;
 
       console.log(name + ": " + calories + " calories");
+    }
+  }
+
+  //list of all donus with their carbohydrate info
+  function listDonutsWithCarbohydrates()
+  {
+    console.log("////////////////////");
+    console.log("List of donuts with their carbohydrates:");
+
+    const donuts = data.items.item;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      console.log("//////////");
+      const name = donuts[i].name;
+
+      const carbohydrates = donuts[i].nutrition_facts.nutrition.carbohydrate;
+
+      const carbohydrateDailyValue = carbohydrates.daily_value;
+
+      const carbohydrateAmount = carbohydrates.carbs_detail.amount;
+
+      const sugarAmount = carbohydrates.carbs_detail.type.sugars;
+
+      const fiberAmount = carbohydrates.carbs_detail.type.fibre;
+
+      console.log(name + " carbohydrate info: ");
+
+      console.log("Daily Value: " + carbohydrateDailyValue);
+
+      console.log("Carbohydrate Amount: " + carbohydrateAmount);
+
+      console.log("Sugar Amount: " + sugarAmount);
+
+      console.log("Fiber Amount: " + fiberAmount);
     }
   }
 
