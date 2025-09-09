@@ -1155,9 +1155,6 @@ exercise5();
 
 function exercise5()
 {
-
-
-
   console.log("");
   console.log("EXERCISE 5");
   console.log("////////////////////");
@@ -1173,6 +1170,29 @@ function exercise5()
 
   changeCarbohydrateDailyValueTo52PercentOnAllDonuts();
 
+  addGlutenFreeAlergenToRelaxingAlchemyDonut();
+
+}
+
+function addGlutenFreeAlergenToRelaxingAlchemyDonut()
+{
+  console.log("Add gluten-free alergen to relaxing alchemy donut");
+
+  const donuts = data.items.item;
+
+  for(let i=0; i<donuts.length; i++)
+  {
+    const name = donuts[i].name;
+
+    if(name.includes("Relaxing Alchemy"))
+    {
+      donuts[i].alergen = "Gluten-Free";
+
+      console.log(name + " donut alergen: " + donuts[i].alergen);
+    }
+  }
+
+  console.log("////////////////////");
 }
 
 function changeCarbohydrateDailyValueTo52PercentOnAllDonuts()
