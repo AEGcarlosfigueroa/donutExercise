@@ -1167,6 +1167,33 @@ function exercise5()
 
   changeDonutsWithMoreThan12Choresterol();
 
+  changeDonutsWithMoreThan50Sugar();
+
+}
+
+function changeDonutsWithMoreThan50Sugar()
+{
+  console.log("Set donuts with more than 50 sugar to 42g of carbohydrates");
+
+  const donuts = data.items.item;
+
+  for(let i=0; i<donuts.length; i++)
+  {
+    const sugarString = donuts[i].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars;
+
+    const sugar = convertStringToNumber(sugarString);
+
+    if(sugar > 50)
+    {
+      donuts[i].nutrition_facts.nutrition.carbohydrate.carbs_detail.amount = "42g";
+    }
+
+    console.log("Donut " + (i+1));
+    console.log("Sugar: " + sugarString);
+    console.log("Carbohydrates: " + donuts[i].nutrition_facts.nutrition.carbohydrate.carbs_detail.amount);
+  }
+
+  console.log("////////////////////");
 }
 
 function changeDonutsWithMoreThan12Choresterol()
