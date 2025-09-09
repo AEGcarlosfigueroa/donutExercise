@@ -1169,6 +1169,37 @@ function exercise5()
 
   changeDonutsWithMoreThan50Sugar();
 
+  addNitacineToMagicFusion();
+
+}
+
+function addNitacineToMagicFusion()
+{
+  console.log("Add nitacine vitamin to magic fusion donut");
+
+  const nitacineObject =
+  { 
+    "type": "Nitacine", "percent": "8%" 
+  }
+
+  const donuts = data.items.item;
+
+  for(let i=0; i<donuts.length; i++)
+  {
+    if(donuts[i].name.includes("Magic Fusion"))
+    {
+      const vitamins = donuts[i].nutrition_facts.nutrition.vitamins;
+
+      vitamins.push(nitacineObject);
+
+      console.log(donuts[i].name + " donut vitamins:")
+
+      for(let j=0; j<vitamins.length; j++)
+      {
+        console.log(vitamins[j].type);
+      }
+    }
+  }
 }
 
 function changeDonutsWithMoreThan50Sugar()
