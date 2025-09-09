@@ -712,6 +712,99 @@ function convertStringToNumber(string)
 
 	//Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
 
+  exercise3();
+
+  function exercise3()
+  {
+    console.log("");
+    console.log("EXERCISE 3");
+
+    console.log("/////////////////////");
+
+    showDonutsWithBatters();
+
+    showDonutsWithToppings();
+
+    showDonutWithMostBatters();
+  }
+
+  function showDonutWithMostBatters()
+  {
+    const donuts = data.items.item;
+
+    let currentName = "";
+
+    let currentMaxBatters = 0;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+
+      const batterQuantity = donuts[i].batters.batter.length;
+
+      if(batterQuantity >= currentMaxBatters)
+      {
+        currentName = donuts[i].name;
+        currentMaxBatters = batterQuantity;
+      }
+
+    }
+
+    console.log("Donut with most batters: " + currentName);
+
+    console.log("/////////////////////");
+  }
+
+  function showDonutsWithToppings()
+  {
+    const donuts = data.items.item;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      console.log("//////////");
+
+      const name = donuts[i].name;
+
+      console.log(name + " toppings: ");
+
+      const toppings = donuts[i].topping;
+
+      for(let j=0; j<toppings.length; j++)
+      {
+        const batterName = toppings[j].type;
+        console.log(batterName);
+      }
+    }
+
+    console.log("/////////////////////");
+  }
+
+  function showDonutsWithBatters()
+  {
+
+    const donuts = data.items.item;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      console.log("//////////");
+
+      const name = donuts[i].name;
+
+      console.log(name + " batters: ");
+
+      const batters = donuts[i].batters.batter;
+
+      for(let j=0; j<batters.length; j++)
+      {
+        const batterName = batters[j].type;
+        console.log(batterName);
+      }
+    }
+
+    console.log("/////////////////////");
+  }
+
+
+
 //4.- Nuestro grupo sólo dispone de 4 monedas de plata.
 
 	//Mostrar cuántos donuts de cada tipo podemos comprar y las monedas sobrantes. (+ 50 exp)
