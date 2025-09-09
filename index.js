@@ -306,6 +306,17 @@ const data = {
   }
 };
 
+main();
+
+function main()
+{
+  exercise1();
+  exercise2();
+  exercise3();
+  exercise4();
+  exercise5();
+}
+
 
 //1.- Nuestro grupo se encuentra totalmente debilitado. Necesitamos tomar azúcares, hierro, proteínas y poca fibra. Para ello debemos preparar un conjuro que nos muestre:
 
@@ -317,9 +328,7 @@ const data = {
 
 	//donut con menos fibra (+ 50 exp)
 
-	//donut con más calorías (+ 50 exp)
-
-exercise1();    
+	//donut con más calorías (+ 50 exp)   
 
 function exercise1()
 {
@@ -527,8 +536,6 @@ function convertStringToNumber(string)
 
 	//Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
 
-  exercise2();
-
   function exercise2()
   {
     console.log("");
@@ -713,8 +720,6 @@ function convertStringToNumber(string)
 	//Mostrar el donut con más variedad de toppings (+ 50 exp)
 
 	//Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
-
-  exercise3();
 
   function exercise3()
   {
@@ -920,13 +925,10 @@ function convertStringToNumber(string)
 
 	//Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
-
-  exercise4();
-
   function exercise4()
   {
     console.log("");
-    console.log("EXERCISE 3");
+    console.log("EXERCISE 4");
 
     console.log("/////////////////////");
 
@@ -1150,8 +1152,6 @@ function convertStringToNumber(string)
 //El daily value de los carbohidratos de todos los donuts va a ser de 53% (+ 50 exp)
 
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
-
-exercise5();
 
 function exercise5()
 {
