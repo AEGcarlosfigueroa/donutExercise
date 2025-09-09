@@ -119,17 +119,24 @@ import data from "./data.mjs";
         {
           if(price < donutPriceArray[j] && !elementInserted)
           {
-            let slicedArray = donutPriceArray.slice(j, donutPriceArray.length - 1);
 
-            donutPriceArray.push(price);
+            let slicedArray = donutPriceArray.slice(j);
 
-            donutPriceArray.concat(slicedArray);
+            donutPriceArray[j] = price;
 
-            let slicedArrayNames = donutNameArray.slice(j, donutNameArray.length - 1);
+            for(let k=0; k<slicedArray.length; k++)
+            {
+                donutPriceArray[j+k+1] = slicedArray[k];
+            }
 
-            donutNameArray.push(name);
+            let slicedArrayNames = donutNameArray.slice(j-1, donutNameArray.length);
 
-            donutPriceArray.concat(slicedArrayNames);
+            donutNameArray[j] = name;
+
+            for(let k=0; k<slicedArrayNames.length; k++)
+            {
+                donutNameArray[j+k+1] = slicedArrayNames[k];
+            }
 
             elementInserted = true;
           }
