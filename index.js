@@ -919,7 +919,7 @@ function convertStringToNumber(string)
 	//Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
 
-  exercise4();
+  exercise4();.58
 
   function exercise4()
   {
@@ -931,6 +931,96 @@ function convertStringToNumber(string)
     showNumberOfEachDonutBoughtForQuantityOfCoins(4);
 
     showMostExpensiveDonutQuantityOfCoinsCanBuy(4);
+
+    showCheapestDonut();
+
+    sortDonutsFromCheapestToMostExpensive();
+  }
+
+  function sortDonutsFromCheapestToMostExpensive()
+  {
+    const donuts = data.items.item;
+
+    const donutNameArray = [];
+
+    const donutPriceArray = [];
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const name = donuts[i].name;
+
+      const price = donuts[i].ppu;
+
+      if(i === 0)
+      {
+        donutNameArray.push(name);
+        donutPriceArray.push(price);
+      }
+      else
+      {
+        let elementInserted = false;
+
+        for(let j=0; j<donutPriceArray.length; j++)
+        {
+          if(price < donutPriceArray[j] && !elementInserted)
+          {
+            let slicedArray = donutPriceArray.slice(j, donutPriceArray.length - 1);
+
+            donutPriceArray.push(price);
+
+            donutPriceArray.concat(slicedArray);
+
+            let slicedArrayNames = donutNameArray.slice(j, donutNameArray.length - 1);
+
+            donutNameArray.push(name);
+
+            donutPriceArray.concat(slicedArrayNames);
+
+            elementInserted = true;
+          }
+        }
+
+        if(!elementInserted)
+        {
+          donutNameArray.push(name);
+          donutPriceArray.push(price);
+        }
+      }
+    }
+
+    console.log("List of donuts from cheapest to most expensive: ");
+
+    for(let i=0; i<donutNameArray.length; i++)
+    {
+      console.log(donutNameArray[i]);
+    }
+
+    console.log("/////////////////////");
+  }
+
+  function showCheapestDonut()
+  {
+    const donuts = data.items.item;
+
+    let currentDonutPrice = 0;
+
+    let currentDonutName = "";
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const price = donuts[i].ppu;
+
+      const name = donuts[i].name;
+
+      if(i === 0 || currentDonutPrice >= price)
+      {
+        currentDonutPrice = price;
+        currentDonutName = name;
+      }
+    }
+
+    console.log("Cheapest donut: " + currentDonutName);
+    console.log("/////////////////////");
   }
 
   function showMostExpensiveDonutQuantityOfCoinsCanBuy(coins)
