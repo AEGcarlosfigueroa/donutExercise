@@ -1171,6 +1171,24 @@ function exercise5()
 
   addNitacineToMagicFusion();
 
+  changeCarbohydrateDailyValueTo52PercentOnAllDonuts();
+
+}
+
+function changeCarbohydrateDailyValueTo52PercentOnAllDonuts()
+{
+  console.log("Change carbohydrate daily value on all donuts to 52%");
+
+  const donuts = data.items.item;
+
+  for(let i=0; i<donuts.length; i++)
+  {
+    donuts[i].nutrition_facts.nutrition.carbohydrate.daily_value = "52%";
+
+    console.log("Donut " + (i+1) +  " carbohydrate daily value: " +  donuts[i].nutrition_facts.nutrition.carbohydrate.daily_value);
+  }
+
+  console.log("////////////////////");
 }
 
 function addNitacineToMagicFusion()
@@ -1200,6 +1218,8 @@ function addNitacineToMagicFusion()
       }
     }
   }
+
+  console.log("////////////////////");
 }
 
 function changeDonutsWithMoreThan50Sugar()
