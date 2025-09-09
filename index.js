@@ -929,6 +929,34 @@ function convertStringToNumber(string)
     console.log("/////////////////////");
 
     showNumberOfEachDonutBoughtForQuantityOfCoins(4);
+
+    showMostExpensiveDonutQuantityOfCoinsCanBuy(4);
+  }
+
+  function showMostExpensiveDonutQuantityOfCoinsCanBuy(coins)
+  {
+    const donuts = data.items.item;
+
+    let currentDonutName = "";
+
+    let currentDonutPrice = 0;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const price = donuts[i].ppu;
+
+      const name = donuts[i].name;
+
+      if(price >= currentDonutPrice && price <= coins)
+      {
+        currentDonutName = name;
+
+        currentDonutPrice = price;
+      }
+    }
+
+    console.log("Most expensive donut " + coins + " coins can buy: " + currentDonutName);
+    console.log("/////////////////////");
   }
 
   function showNumberOfEachDonutBoughtForQuantityOfCoins(coins)
