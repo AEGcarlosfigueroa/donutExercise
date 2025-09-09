@@ -729,14 +729,16 @@ function convertStringToNumber(string)
 
     showDonutWithMostToppings();
 
-    showAllBattersAndToppings();
+    showNumberOfBattersAndToppings();
   }
 
-  function showAllBattersAndToppings()
+  function showNumberOfBattersAndToppings()
   {
     const donuts = data.items.item;
 
     const batterNames = [];
+
+    let batterNumber = 0;
 
     for(let i=0; i< donuts.length; i++)
     {
@@ -759,20 +761,16 @@ function convertStringToNumber(string)
         if(!batterFound)
         {
           batterNames.push(name);
+          batterNumber++;
         }
       }
     }
 
-    console.log("List of all batters:");
-
-    for(let i=0; i<batterNames.length; i++)
-    {
-      console.log(batterNames[i]);
-    }
-
-    console.log("/////////////////////");
+    console.log("Number of batters: " + batterNumber);
 
     const toppingNames = [];
+
+    let toppingNumber = 0;
 
     for(let i=0; i< donuts.length; i++)
     {
@@ -795,16 +793,12 @@ function convertStringToNumber(string)
         if(!toppingFound)
         {
           toppingNames.push(name);
+          toppingNumber++;
         }
       }
     }
 
-    console.log("List of all toppings:");
-
-    for(let i=0; i<toppingNames.length; i++)
-    {
-      console.log(toppingNames[i]);
-    }
+    console.log("Number of toppings: " + toppingNumber);
 
     console.log("/////////////////////");
   }
