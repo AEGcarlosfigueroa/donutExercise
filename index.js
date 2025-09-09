@@ -919,7 +919,7 @@ function convertStringToNumber(string)
 	//Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
 
-  exercise4();.58
+  exercise4();
 
   function exercise4()
   {
@@ -935,6 +935,72 @@ function convertStringToNumber(string)
     showCheapestDonut();
 
     sortDonutsFromCheapestToMostExpensive();
+
+    showHowManyDifferentDonutsQuantityOfCoinsCanBuy(4);
+  }
+
+  function showHowManyDifferentDonutsQuantityOfCoinsCanBuy(coins)
+  {
+    const donuts = data.items.item;
+
+    const donutPriceArray = [];
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const name = donuts[i].name;
+
+      const price = donuts[i].ppu;
+
+      if(i === 0)
+      {
+        donutPriceArray.push(price);
+      }
+      else
+      {
+        let elementInserted = false;
+
+        for(let j=0; j<donutPriceArray.length; j++)
+        {
+          if(price < donutPriceArray[j] && !elementInserted)
+          {
+            let slicedArray = donutPriceArray.slice(j, donutPriceArray.length - 1);
+
+            donutPriceArray.push(price);
+
+            donutPriceArray.concat(slicedArray);
+
+            elementInserted = true;
+          }
+        }
+
+        if(!elementInserted)
+        {
+          donutPriceArray.push(price);
+        }
+      }
+    }
+
+    let coinsLeft = coins;
+
+    let donutCount = 0;
+
+    for(let i=0; i<donutPriceArray.length; i++)
+    {
+      const donutPrice = donutPriceArray[i];
+
+      if(donutPrice <= coinsLeft)
+      {
+        coinsLeft -= donutPrice;
+        donutCount++;
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    console.log(donutCount + " different donuts can be bought with " + coins + " coins.");
+    console.log("////////////////////")
   }
 
   function sortDonutsFromCheapestToMostExpensive()
