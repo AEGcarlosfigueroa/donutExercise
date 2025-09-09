@@ -726,6 +726,113 @@ function convertStringToNumber(string)
     showDonutsWithToppings();
 
     showDonutWithMostBatters();
+
+    showDonutWithMostToppings();
+
+    showAllBattersAndToppings();
+  }
+
+  function showAllBattersAndToppings()
+  {
+    const donuts = data.items.item;
+
+    const batterNames = [];
+
+    for(let i=0; i< donuts.length; i++)
+    {
+      const batters = donuts[i].batters.batter;
+
+      for(let j=0; j<batters.length; j++)
+      {
+        const name = batters[j].type;
+
+        let batterFound = false;
+
+        for(let k=0; k<batterNames.length; k++)
+        {
+          if(batterNames[k] === name)
+          {
+            batterFound = true;
+          }
+        }
+
+        if(!batterFound)
+        {
+          batterNames.push(name);
+        }
+      }
+    }
+
+    console.log("List of all batters:");
+
+    for(let i=0; i<batterNames.length; i++)
+    {
+      console.log(batterNames[i]);
+    }
+
+    console.log("/////////////////////");
+
+    const toppingNames = [];
+
+    for(let i=0; i< donuts.length; i++)
+    {
+      const toppings = donuts[i].topping;
+
+      for(let j=0; j<toppings.length; j++)
+      {
+        const name = toppings[j].type;
+
+        let toppingFound = false;
+
+        for(let k=0; k<toppingNames.length; k++)
+        {
+          if(toppingNames[k] === name)
+          {
+            toppingFound = true;
+          }
+        }
+
+        if(!toppingFound)
+        {
+          toppingNames.push(name);
+        }
+      }
+    }
+
+    console.log("List of all toppings:");
+
+    for(let i=0; i<toppingNames.length; i++)
+    {
+      console.log(toppingNames[i]);
+    }
+
+    console.log("/////////////////////");
+  }
+
+  function showDonutWithMostToppings()
+  {
+    const donuts = data.items.item;
+
+    let currentName = "";
+
+    let currentMaxToppings = 0;
+
+    for(let i=0; i<donuts.length; i++)
+    {
+
+      const toppingQuantity = donuts[i].topping.length;
+
+      if(toppingQuantity >= currentMaxToppings)
+      {
+        currentName = donuts[i].name;
+        currentMaxToppings = toppingQuantity;
+      }
+
+    }
+
+    console.log("Donut with most toppings: " + currentName);
+
+    console.log("/////////////////////");
   }
 
   function showDonutWithMostBatters()
