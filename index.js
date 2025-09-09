@@ -918,6 +918,43 @@ function convertStringToNumber(string)
 
 	//Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
+
+  exercise4();
+
+  function exercise4()
+  {
+    console.log("");
+    console.log("EXERCISE 3");
+
+    console.log("/////////////////////");
+
+    showNumberOfEachDonutBoughtForQuantityOfCoins(4);
+  }
+
+  function showNumberOfEachDonutBoughtForQuantityOfCoins(coins)
+  {
+    const donuts = data.items.item;
+
+    console.log("Quantity of each donut " + coins + " coins can buy");
+
+    for(let i=0; i<donuts.length; i++)
+    {
+      const price = donuts[i].ppu;
+
+      const name = donuts[i].name;
+
+      const quantityOfDonutsBought = Math.floor(coins / price);
+
+      const coinsLeft = coins - (quantityOfDonutsBought * price);
+
+      const coinsLeftRounded = Math.round(coinsLeft * 100) / 100;
+
+      console.log(name + ": " + quantityOfDonutsBought + " donuts, " + coinsLeftRounded + " coins are left");
+    }
+
+    console.log("/////////////////////");
+  }
+
 //5.- Para nuestro horror y preocupación hemos detectado grandes errores sintácticos en el conjuro original, es momento de poner nuestros conocimientos arcanos al servicio de toda la posada.
 
 //Los donuts con el colesterol > 12 modificar las grasas trans a 3,2 gr (+ 50 exp)
