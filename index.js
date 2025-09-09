@@ -497,6 +497,8 @@ function convertStringToNumber(string)
 {
     string = string.replace("g", "");
 
+    string = string.replace("m", "");
+
     string = string.replace("%", "");
 
     let number = 0;
@@ -947,8 +949,6 @@ function convertStringToNumber(string)
 
     for(let i=0; i<donuts.length; i++)
     {
-      const name = donuts[i].name;
-
       const price = donuts[i].ppu;
 
       if(i === 0)
@@ -1150,3 +1150,46 @@ function convertStringToNumber(string)
 //El daily value de los carbohidratos de todos los donuts va a ser de 53% (+ 50 exp)
 
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
+
+exercise5();
+
+function exercise5()
+{
+
+
+
+  console.log("");
+  console.log("EXERCISE 5");
+  console.log("////////////////////");
+  console.log("Donuts data modified according to exercise 5 instructions: ");
+
+  console.log("////////////////////");
+
+  changeDonutsWithMoreThan12Choresterol();
+
+}
+
+function changeDonutsWithMoreThan12Choresterol()
+{
+  console.log("Set donuts with more than 12mg choresterol to 3.2g of trans fat");
+
+  const donuts = data.items.item;
+
+  for(let i=0; i<donuts.length; i++)
+  {
+    const choresterolString = donuts[i].nutrition_facts.nutrition.cholesterol.amount;
+
+    const cholesterol = convertStringToNumber(choresterolString);
+
+    if(cholesterol > 12)
+    {
+      donuts[i].nutrition_facts.nutrition.fat.fat_type.trans = "3.2g";
+    }
+
+    console.log("Donut " + (i+1));
+    console.log(choresterolString + " choresterol");
+    console.log(donuts[i].nutrition_facts.nutrition.fat.fat_type.trans + " trans fat");
+  }
+
+  console.log("////////////////////");
+}
