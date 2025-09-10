@@ -120,7 +120,12 @@ import data from "./data.mjs";
           if(price < donutPriceArray[j] && !elementInserted)
           {
 
-            let slicedArray = donutPriceArray.slice(j);
+            let slicedArray = [];
+
+            for(let k=j; k<donutPriceArray.length; k++)
+            {
+                slicedArray.push(donutPriceArray[k]);
+            }
 
             donutPriceArray[j] = price;
 
@@ -129,7 +134,12 @@ import data from "./data.mjs";
                 donutPriceArray[j+k+1] = slicedArray[k];
             }
 
-            let slicedArrayNames = donutNameArray.slice(j-1, donutNameArray.length);
+            let slicedArrayNames = [];
+
+            for(let k=j; k<donutNameArray.length; k++)
+            {
+                slicedArrayNames.push(donutNameArray[k]);
+            }
 
             donutNameArray[j] = name;
 
@@ -148,6 +158,8 @@ import data from "./data.mjs";
           donutPriceArray.push(price);
         }
       }
+
+      console.log(donutPriceArray);
     }
 
     console.log("List of donuts from cheapest to most expensive: ");
