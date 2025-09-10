@@ -158,8 +158,6 @@ import data from "./data.mjs";
           donutPriceArray.push(price);
         }
       }
-
-      console.log(donutPriceArray);
     }
 
     console.log("List of donuts from cheapest to most expensive: ");
